@@ -69,7 +69,6 @@
 ## Optional
 
 - Serial access - super handy!
-    - https://imgur.com/0EVtcnw
     - <img src="images/hHEjkV1.jpg" width=100px></img>
     - <img src="images/P1030690.JPG" width=100px></img>
     - <img src="images/P1030691.JPG" width=100px></img>

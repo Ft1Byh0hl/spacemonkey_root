@@ -80,40 +80,40 @@
     - ...
 
 ## UBoot environment
-bootargs=${console} root=/dev/sda1  
-bootcmd=run reset_button_test; run bootstrap_test; run upgrade_test; run hdd_boot; run nand_boot; run led_fail;  
-bootdelay=0  
-bootstrap_test=if test ${sm_bootstrap}_ = true_; then run nand_boot; fi  
-clear_sm_upgrade=setenv sm_upgrade false; saveenv  
-console=console=ttyS0,115200  
-ethact=egiga0  
-hdd_boot=ide reset; run hdd_unlock; run hdd_load_kernel hdd_set_args hdd_boot_cmd  
-hdd_boot_cmd=bootm ${kernel_addr}  
-hdd_load_kernel=ext2load ide 0 ${kernel_addr} boot/uImage  
-hdd_set_args=setenv bootargs ${console} ${mtdparts} root=/dev/sda1  
-hdd_unlock=if test ${hdd_password}_ != _; then if ide unlock ${hdd_password}; then ide freeze; fi; fi  
-initrd_addr=0x1100000  
-kernel_addr=0x800000  
-led_fail=led green off; led blue off; while true; do led red on; sleep 1; led red off; sleep 1; led red on; sleep 1; led   red off; sleep 1; led red on; sleep 1; led red off; sleep 3; done  
-mfg_location=Compeq  
-mfg_timestamp=Sun Sep 15 08:44:07 2013 UTC  
-mtdids=nand0=orion_nand  
-mtdparts=mtdparts=orion_nand:1M(uboot),4M(uImage),10M(recovery),1M(secure),-(data)  
-nand_boot=run nand_load_kernel nand_set_args nand_boot_cmd  
-nand_boot_cmd=bootm ${kernel_addr}  
-nand_load_kernel=nand read ${kernel_addr} nand0,1  
-nand_set_args=setenv bootargs ${console} ${mtdparts} root=/dev/mtdblock2 ro   
-rootfstype=jffs2  
-reset_button_test=if resetbutton; then run nand_boot; fi  
-silent=true  
-stderr=serial  
-stdin=serial  
-stdout=serial
-upgrade_boot=run clear_sm_upgrade nand_load_kernel upgrade_set_args nand_boot_cmd  
-upgrade_set_args=setenv bootargs ${console} ${mtdparts} root=/dev/mtdblock2 ro rootfstype=jffs2 smupgrade=true  
-upgrade_test=if test ${sm_upgrade}_ = true_; then run upgrade_boot; fi  
-sm_image_timestamp=Sat Sep 21 21:59:20 UTC 2013  
-ethaddr=70:93:f8:00:09:7b  
-hdd_password=QhzO_C8bkUPuBECBoQNh7YoTO7OTErIN  
-sm_preprovision_timestamp=Sat Sep 21 21:59:22 UTC 2013  
-sm_bootstrap=false  
+    bootargs=${console} root=/dev/sda1  
+    bootcmd=run reset_button_test; run bootstrap_test; run upgrade_test; run hdd_boot; run nand_boot; run led_fail;  
+    bootdelay=0  
+    bootstrap_test=if test ${sm_bootstrap}_ = true_; then run nand_boot; fi  
+    clear_sm_upgrade=setenv sm_upgrade false; saveenv  
+    console=console=ttyS0,115200  
+    ethact=egiga0  
+    hdd_boot=ide reset; run hdd_unlock; run hdd_load_kernel hdd_set_args hdd_boot_cmd  
+    hdd_boot_cmd=bootm ${kernel_addr}  
+    hdd_load_kernel=ext2load ide 0 ${kernel_addr} boot/uImage  
+    hdd_set_args=setenv bootargs ${console} ${mtdparts} root=/dev/sda1  
+    hdd_unlock=if test ${hdd_password}_ != _; then if ide unlock ${hdd_password}; then ide freeze; fi; fi  
+    initrd_addr=0x1100000  
+    kernel_addr=0x800000  
+    led_fail=led green off; led blue off; while true; do led red on; sleep 1; led red off; sleep 1; led red on; sleep 1; led   red off; sleep 1; led red on; sleep 1; led red off; sleep 3; done  
+    mfg_location=Compeq  
+    mfg_timestamp=Sun Sep 15 08:44:07 2013 UTC  
+    mtdids=nand0=orion_nand  
+    mtdparts=mtdparts=orion_nand:1M(uboot),4M(uImage),10M(recovery),1M(secure),-(data)  
+    nand_boot=run nand_load_kernel nand_set_args nand_boot_cmd  
+    nand_boot_cmd=bootm ${kernel_addr}  
+    nand_load_kernel=nand read ${kernel_addr} nand0,1  
+    nand_set_args=setenv bootargs ${console} ${mtdparts} root=/dev/mtdblock2 ro   
+    rootfstype=jffs2  
+    reset_button_test=if resetbutton; then run nand_boot; fi  
+    silent=true  
+    stderr=serial  
+    stdin=serial  
+    stdout=serial
+    upgrade_boot=run clear_sm_upgrade nand_load_kernel upgrade_set_args nand_boot_cmd  
+    upgrade_set_args=setenv bootargs ${console} ${mtdparts} root=/dev/mtdblock2 ro rootfstype=jffs2 smupgrade=true  
+    upgrade_test=if test ${sm_upgrade}_ = true_; then run upgrade_boot; fi  
+    sm_image_timestamp=Sat Sep 21 21:59:20 UTC 2013  
+    ethaddr=70:93:f8:00:09:7b  
+    hdd_password=QhzO_C8bkUPuBECBoQNh7YoTO7OTErIN  
+    sm_preprovision_timestamp=Sat Sep 21 21:59:22 UTC 2013  
+    sm_bootstrap=false  

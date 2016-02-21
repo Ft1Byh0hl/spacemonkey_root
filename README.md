@@ -2,16 +2,19 @@
 # Process for rooting Space Monkey device
 
 ## Minimal Procedure
-- Open device
+<img src="images/P1030676.JPG" width=100px></img>
+- Open device 
     - Power off device
-    - Remove label and screw from bottom of device
+    - Remove label and screws from bottom of device. Screws are Torx T-10.
+    -   <img src="images/P1030677.jpg" width=100px></img> -> <img src="images/P1030678.JPG" width=100px></img>
     - Pry apart plastic shell with much force (ideally without injuring yourself or others)
+        - <img src="images/P1030680.JPG" width=100px></img> -> <img src="images/P1030681.JPG" width=100px></img>, <img src="images/P1030685.JPG" width=100px></img>
 - Create bootable disk
     - Partition a new disk
         - gpt is ok
         - Linux can use virtually anything as a root FS, but UBoot can boot from ext3 (perhaps not ext4?)
-    - Install a root FS
         - default UBoot attempts to boot from `/dev/sda1`. UBoot probably enumerates USB devices starting at `/dev/sdb`, but requires the kernel to be on IDE 0.
+    - Install a root FS
         - mount root partition at `/tmp/smroot`
         - `sudo debootstrap --arch armel --foreign sid /tmp/smboot/`
     - set up a chroot
@@ -68,6 +71,9 @@
 
 - Serial access - super handy!
     - https://imgur.com/0EVtcnw
+    - <img src="images/hHEjkV1.jpg" width=100px></img>
+    - <img src="images/P1030690.JPG" width=100px></img>
+    - <img src="images/P1030691.JPG" width=100px></img>
 - Compile kernel
     - ...
     - remember to set MAC address in dts file; otherwise, you’ll get 70:93:f8:00:09:7b (?)

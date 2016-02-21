@@ -35,7 +35,7 @@
                 
                 [Link]
                 MACAddress=<your MAC here>
-    - Enable networkd
+    - Enable networkd (todo: test this in chroot)
         - `systemctl enable systemd-networkd.service`
     - enable root login over ssh (just for now; you can disable it later)
         - `sed -i /etc/ssh/sshd_config -re 's/^(PermitRootLogin)[[:space:]]+.*/\1 yes/'`

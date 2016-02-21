@@ -17,7 +17,7 @@
     - set up a chroot
         - `sudo apt-get install qemu-user-static`
         - `sudo cp /usr/bin/qemu-arm-static /tmp/smboot/usr/bin/`
-        `- sudo chroot /tmp/smboot`
+        - `sudo chroot /tmp/smboot`
     - finish bootstrap in chroot
         - `/debootstrap/debootstrap --second-stage`
     - set a root password in chroot
@@ -70,7 +70,7 @@
     - https://imgur.com/0EVtcnw
 - Compile kernel
     - ...
-    - remember to set MAC address in dts file; otherwise, you’ll get 70:93:f8:00:09:7b
+    - remember to set MAC address in dts file; otherwise, you’ll get 70:93:f8:00:09:7b (?)
     - ...
 
 ## UBoot environment

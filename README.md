@@ -11,19 +11,19 @@
         - gpt is ok
         - Linux can use virtually anything as a root FS, but UBoot can boot from ext3 (perhaps not ext4?)
     - Install a root FS
-        - default UBoot attempts to boot from /dev/sda1. UBoot probably enumerates USB devices starting at /dev/sdb, but requires the kernel to be on IDE 0.
-        - mount root partition at /tmp/smroot
-        - sudo debootstrap --arch armel --foreign sid /tmp/smboot/
+        - default UBoot attempts to boot from `/dev/sda1`. UBoot probably enumerates USB devices starting at `/dev/sdb`, but requires the kernel to be on IDE 0.
+        - mount root partition at `/tmp/smroot`
+        - `sudo debootstrap --arch armel --foreign sid /tmp/smboot/`
     - set up a chroot
-        - sudo apt-get install qemu-user-static
-        - sudo cp /usr/bin/qemu-arm-static /tmp/smboot/usr/bin/
-        - sudo chroot /tmp/smboot
+        - `sudo apt-get install qemu-user-static`
+        - `sudo cp /usr/bin/qemu-arm-static /tmp/smboot/usr/bin/`
+        `- sudo chroot /tmp/smboot`
     - finish bootstrap in chroot
-        - /debootstrap/debootstrap --second-stage
+        - `/debootstrap/debootstrap --second-stage`
     - set a root password in chroot
-        - passwd
+        - `passwd`
     - install some things in chroot
-        - apt-get install u-boot-tools openssh-server
+        - `apt-get install u-boot-tools openssh-server`
     - set a hostname in /etc/hostname
     - enable DHCP on eth0 and set the correct MAC address (it’s on the sticker from the bottom of the device)
         - Put the following in /etc/systemd/network/eth0.network:
@@ -36,30 +36,30 @@
                 [Link]
                 MACAddress=<your MAC here>
     - Enable networkd
-        - systemctl enable systemd-networkd.service
+        - `systemctl enable systemd-networkd.service`
     - enable root login over ssh (just for now; you can disable it later)
-        - sed -i /etc/ssh/sshd_config -re 's/^(PermitRootLogin)[[:space:]]+.*/\1 yes/'
+        - `sed -i /etc/ssh/sshd_config -re 's/^(PermitRootLogin)[[:space:]]+.*/\1 yes/'`
     - exit chroot
-        - exit
+        - `exit`
 - Install a kernel at /boot/uImage on the root FS
-    - sudo wget https://github.com/Ft1Byh0hl/spacemonkey_data/blob/master/uImage-3.19?raw=true -O /tmp/smboot/boot/uImage
+    - `sudo wget https://github.com/Ft1Byh0hl/spacemonkey_data/blob/master/uImage-3.19?raw=true -O /tmp/smboot/boot/uImage`
 - Connect bootable disk and network, boot system, find IP address from DHCP
     - check your router/DHCP server for new leases
 - login to the system with ssh using the password you set previously
-    - ssh root@<IP address>
+    - `ssh root@<IP address>`
 - Get original disk passkey from UBoot environment
     - put the following in /etc/fw_env.config:
-                # Configuration file for fw_(printenv/setenv) utility.
-                # MTD Device Offset Size Sector Size
-                /dev/mtd0 0xE0000 0x20000 0x20000
-    - export hdd_password=$(fw_printenv  | sed -nre 's/hdd_password=(.*)/\1/p')
+            # Configuration file for fw_(printenv/setenv) utility.
+            # MTD Device Offset Size Sector Size
+            /dev/mtd0 0xE0000 0x20000 0x20000
+    - `export hdd_password=$(fw_printenv  | sed -nre 's/hdd_password=(.*)/\1/p')`
         - write this down!
 - Get root on original FS with passkey
     - connect original disk to another machine
         - screws holding rubber pads are ~ 7/64” hex (~3mm)
         - this connection probably has to be direct SATA or eSATA; I doubt ATA security commands work over USB-SATA adapters.
-    - unlock disk with passkey from above (stored in hdd_password shell environment variable), assuming original Space Monkey disk is /dev/sdb.
-        - hdparm --security-unlock $hdd_password /dev/sdb
+    - unlock disk with passkey from above (stored in hdd_password shell environment variable), assuming original Space Monkey disk is `/dev/sdb`.
+        - `hdparm --security-unlock $hdd_password /dev/sdb`
     - Set a new root password, add another user with sudo, add your ssh key, etc.
     - Connect original Space Monkey disk back to Space Monkey device
 - Enjoy root!

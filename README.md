@@ -60,7 +60,7 @@
         - screws holding rubber pads are ~ 7/64” hex (~3mm)
         - this connection probably has to be direct SATA or eSATA; I doubt ATA security commands work over USB-SATA adapters.
     - unlock disk with passkey from above (stored in hdd_password shell environment variable), assuming original Space Monkey disk is `/dev/sdb`.
-        - `hdparm --security-unlock $hdd_password /dev/sdb`
+        - `hdparm --security-disable $hdd_password /dev/sdb`
     - Set a new root password, add another user with sudo, add your ssh key, etc.
     - Connect original Space Monkey disk back to Space Monkey device
 - Enjoy root!

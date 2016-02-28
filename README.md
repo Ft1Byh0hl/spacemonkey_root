@@ -14,7 +14,8 @@
         - Linux can use virtually anything as a root FS, but UBoot can boot from ext3 (perhaps not ext4?)
         - default UBoot attempts to boot from `/dev/sda1`. UBoot probably enumerates USB devices starting at `/dev/sdb`, but requires the kernel to be on IDE 0.
     - Install a root FS
-        - mount root partition at `/tmp/smroot`
+        - mount root partition at `/tmp/smboot`
+        - `sudo apt-get install debootstrap`
         - `sudo debootstrap --arch armel --foreign sid /tmp/smboot/`
     - set up a chroot
         - `sudo apt-get install qemu-user-static`

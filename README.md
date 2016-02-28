@@ -53,7 +53,7 @@
 - Get original disk passkey from UBoot environment
     - put the following in `/etc/fw_env.config`: `/dev/mtd0 0xE0000 0x20000 0x20000`
     - the fields are as follows: MTD Device, Offset, Size, Sector Size
-    - `export hdd_password=$(fw_printenv  | sed -nre 's/hdd_password=(.*)/\1/p')`
+    - `export hdd_password=$(fw_printenv  | sed -nre 's/hdd_password=(.*)/\1/p'); echo $hdd_password`
         - write this down!
 - Get root on original FS with passkey
     - connect original disk to another machine

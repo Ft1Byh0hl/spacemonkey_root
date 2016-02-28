@@ -41,6 +41,7 @@
     - Enable networkd (todo: test this in chroot)
         - `systemctl enable systemd-networkd.service`
     - enable root login over ssh (just for now; you can disable it later)
+        - `apt-get install openssh-server`
         - `sed -i /etc/ssh/sshd_config -re 's/^(PermitRootLogin)[[:space:]]+.*/\1 yes/'`
     - exit chroot
         - `exit`
@@ -51,10 +52,8 @@
 - login to the system with ssh using the password you set previously
     - `ssh root@<IP address>`
 - Get original disk passkey from UBoot environment
-    - put the following in /etc/fw_env.config:
-            # Configuration file for fw_(printenv/setenv) utility.
-            # MTD Device Offset Size Sector Size
-            /dev/mtd0 0xE0000 0x20000 0x20000
+    - put the following in `/etc/fw_env.config`: `/dev/mtd0 0xE0000 0x20000 0x20000`
+    - the fields are as follows: MTD Device, Offset, Size, Sector Size
     - `export hdd_password=$(fw_printenv  | sed -nre 's/hdd_password=(.*)/\1/p')`
         - write this down!
 - Get root on original FS with passkey

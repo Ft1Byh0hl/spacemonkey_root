@@ -42,7 +42,7 @@
                 [Link]
                 MACAddress=<your MAC here>
 
-          - This worked for me; if it doesn't work for you, try modifying /etc/network/interfaces and adding the code:
+        - This worked for me; if it doesn't work for you, try modifying /etc/network/interfaces and adding the code:
                 
                 auto eth0
                 iface eth0 inet dhcp

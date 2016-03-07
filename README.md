@@ -17,6 +17,8 @@
         - mount root partition at `/tmp/smboot`
         - `sudo apt-get install debootstrap`
         - `sudo debootstrap --arch armel --foreign sid /tmp/smboot/`
+    - Point `/etc/apt/sources.list` on root FS to `deb http://ftp.us.debian.org/debian sid main`
+      - Not all mirrors have `armel` packages
     - set up a chroot
         - `sudo apt-get install qemu-user-static`
         - `sudo cp /usr/bin/qemu-arm-static /tmp/smboot/usr/bin/`
@@ -30,6 +32,7 @@
     - set a hostname in /etc/hostname
     - enable DHCP on eth0 and set the correct MAC address (it’s on the sticker from the bottom of the device)
         - Put the following in /etc/systemd/network/eth0.network:
+                
                 [Match]
                 Name=eth0
                 
@@ -38,10 +41,12 @@
                 
                 [Link]
                 MACAddress=<your MAC here>
+          - This worked for me; if it doesn't work for you, try [this](https://ft1byh0hl.wordpress.com/2016/02/21/detailed-procedure/comment-page-1/#comment-28).
     - Enable networkd (todo: test this in chroot)
         - `systemctl enable systemd-networkd.service`
     - enable root login over ssh (just for now; you can disable it later)
         - `sed -i /etc/ssh/sshd_config -re 's/^(PermitRootLogin)[[:space:]]+.*/\1 yes/'`
+    - If you want to modify anything else on the boot drive, now is the time. E.g., add users, edit sudoers, etc.
     - exit chroot
         - `exit`
 - Install a kernel at /boot/uImage on the root FS
@@ -52,7 +57,7 @@
     - `ssh root@<IP address>`
 - Get original disk passkey from UBoot environment
     - put the following in `/etc/fw_env.config`: `/dev/mtd0 0xE0000 0x20000 0x20000`
-    - the fields are as follows: MTD Device, Offset, Size, Sector Size
+      - the fields are as follows: MTD Device, Offset, Size, Sector Size
     - `export hdd_password=$(fw_printenv  | sed -nre 's/hdd_password=(.*)/\1/p'); echo $hdd_password`
         - write this down!
 - Get root on original FS with passkey

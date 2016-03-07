@@ -46,8 +46,7 @@
                 
                 auto eth0
                 iface eth0 inet dhcp
-
-          - [this](https://ft1byh0hl.wordpress.com/2016/02/21/detailed-procedure/comment-page-1/#comment-28).
+                
     - Enable networkd (todo: test this in chroot)
         - `systemctl enable systemd-networkd.service`
     - enable root login over ssh (just for now; you can disable it later)

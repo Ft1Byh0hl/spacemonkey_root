@@ -28,11 +28,10 @@
     - set a root password in chroot
         - `passwd`
     - ensure apt has the right sources by adding the following to /etc/apt/sources.list
-        
-        deb http://ftp.us.debian.org/debian/ sid main contrib non-free
-        
-        deb-src http://ftp.us.debian.org/debian/ sid main contrib non-free
-
+            
+            deb http://ftp.us.debian.org/debian/ sid main contrib non-free
+            deb-src http://ftp.us.debian.org/debian/ sid main contrib non-free
+            
     - install some things in chroot
         - `apt-get install u-boot-tools openssh-server`
     - set a hostname in /etc/hostname

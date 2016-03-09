@@ -89,6 +89,55 @@
 
 ## Optional
 
+- Remove Space Monkey software
+  - "Keep" key: 
+    - "y": required for general operation
+    - "u": nonessential but potentially useful
+    - "sm": Space Monkey proprietary service-related
+
+|package|description|keep?|
+|---|---|---|
+|spacemonkey-alart-client|sends messages (presumably to Space Monkey)|sm|
+|spacemonkey-apt-keyring||only if you want apt updates from Space Monkey|
+|spacemonkey-assets|sample AV files|sm|
+|spacemonkey-batsudo|?|sm|
+|spacemonkey-blinkenlights|controls the multicolored LED|u|
+|spacemonkey-bwlimit|limits upstream bandwidth|u|
+|spacemonkey-bwtest-client|bandwidth test, uses Space Monkey server by default|u|
+|spacemonkey-bwtest-common|support package for bandwidth test|u|
+|spacemonkey-cgroups-setup|sets up cgroups|u|
+|spacemonkey-cmdline|command-line interface to virtual filesystem|sm; fun to play with!|
+|spacemonkey-cnl|"Device service management"|sm|
+|spacemonkey-cores|allows core dumps|u|
+|spacemonkey-current-kernel|depends on current kernel package|y|
+|spacemonkey-device|master dependency metapackage|sm|
+|spacemonkey-dmclient|some remote management tool|sm|
+|spacemonkey-dmdevinfo|gathers device info|sm|
+|spacemonkey-dvr|Saves camera streams (Vivint)|sm|
+|spacemonkey-dvr-api-server||sm|
+|spacemonkey-ffmpeg|provides ffmpeg.sm|u|
+|spacemonkey-flud||sm|
+|spacemonkey-flud-prodconfig||sm|
+|spacemonkey-fludlib||sm|
+|spacemonkey-gaki|mounts VFS locally in /mnt/gaki|sm|
+|spacemonkey-goflud||sm|
+|spacemonkey-hwmond||sm|
+|spacemonkey-hwmonitor||sm|
+|spacemonkey-kernel-3.8.6-1-armel||only if you want to be able to boot|
+|spacemonkey-logging|configures local logging|u|
+|spacemonkey-machoman|device service management|sm|
+|spacemonkey-nas|configures DLNA, AFP, FTP, SMB|sm|
+|spacemonkey-nas-deps|dependency package|u|
+|spacemonkey-ntp|delays ntp service startup until successful ntpdate|u|
+|spacemonkey-oom-watcher|watches for OOM (out-of-memory) events|u|
+|spacemonkey-provisioning|provisioning client|sm|
+|spacemonkey-space|VFS library|sm|
+|spacemonkey-updater|updates Space Monkey packages on boot|sm|
+|spacemonkey-users|creates spacemonkey system user|sm|
+|spacemonkey-vital|minimal bootstrapping packages|sm|
+|spacemonkey-watchdog|kernel watchdog check-in|y?|
+|spacemonkey-workaround-busted-dns|fixes DNS issues|u|
+
 - Serial access - super handy!
     - <img src="images/hHEjkV1.jpg" width=100px></img>
     - <img src="images/P1030690.JPG" width=100px></img>

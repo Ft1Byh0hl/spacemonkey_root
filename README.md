@@ -61,6 +61,7 @@
 - login to the system with ssh using the password you set previously
     - `ssh root@<IP address>`
 - Get original disk passkey from UBoot environment
+    - remount root as read write so you can edit files `mount / -o remount,rw`
     - put the following in `/etc/fw_env.config`: `/dev/mtd0 0xE0000 0x20000 0x20000`
       - the fields are as follows: MTD Device, Offset, Size, Sector Size
     - `export hdd_password=$(fw_printenv  | sed -nre 's/hdd_password=(.*)/\1/p'); echo $hdd_password`
@@ -72,6 +73,11 @@
     - unlock disk with passkey from above (stored in hdd_password shell environment variable), assuming original Space Monkey disk is `/dev/sdb`.
         - `hdparm --security-disable $hdd_password /dev/sdb`
     - Set a new root password, add another user with sudo, add your ssh key, etc.
+        - Copy the qemu emulator to this disk and chroot into it to make things easier to modify
+            - `cp /usr/bin/qemu-arm-static /tmp/smdrive/usr/bin/` assuming your spacemonkey drive is mounted in /tmp/smdrive
+            - `sudo chroot /tmp/smdrive/`
+        - `adduser bob`
+        - `visudo` and find the line "root ALL=(ALL) ALL" and make a copy that says "bob ALL=(ALL) ALL"
     - Connect original Space Monkey disk back to Space Monkey device
 - Enjoy root!
 

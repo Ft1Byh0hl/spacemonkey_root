@@ -129,7 +129,7 @@
 |spacemonkey-updater|updates Space Monkey packages on boot|sm|
 |spacemonkey-users|creates spacemonkey system user|sm|
 |spacemonkey-vital|minimal bootstrapping packages|sm|
-|spacemonkey-watchdog|kernel watchdog check-in|y?|
+|spacemonkey-watchdog|software watchdog check-in|sm|
 |spacemonkey-workaround-busted-dns|fixes DNS issues|u|
 
 - Serial access - super handy!

@@ -1,6 +1,17 @@
+# Update 2020-05-29: Unlocking drives from Space Monkey V2
+The Space Monkey V2 (sm2-2w10) boots from flash instead of the hard drive, so the below V1 process doesn't work. However, you can make the drive usable by following these steps:
+1. Separate the SATA power and data connections; an extender cable like [this one](https://www.amazon.com/dp/B00NURHUSU) helps.
+2. Connect SATA power and data to the Space Monkey V2 (SM)
+3. Boot the Space Monkey
+4. Wait for a minute or so 
+5. Disconnect the SATA data cable at the drive, being careful not to disrupt the power cable
+6. Connect a separate SATA data cable to a second Linux machine
+7. Run: “hdparm --user-master u --security-set-pass pass /dev/sdX; hdparm --security-disable pass /dev/sdX”, where /dev/sdX matches the device path on the second Linux machine
+
+
 # Process for rooting Space Monkey device
 
-## Minimal Procedure
+## Space Monkey V1 Minimal Procedure
 <img src="images/P1030676.JPG" width=100px></img>
 - Open device 
     - Power off device
